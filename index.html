@@ -3,594 +3,808 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rushikesh Ghatul | Software Engineer Portfolio</title>
-    
-    <!-- GENERATED FAVICON: RG Logo (Dark bg, Blue Text) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0b10'/><rect x='5' y='5' width='90' height='90' rx='15' fill='none' stroke='%232f81f7' stroke-width='6'/><text x='50' y='65' font-family='sans-serif' font-weight='900' font-size='50' text-anchor='middle' fill='%232f81f7'>RG</text></svg>">
-
-    <!-- Fonts: Inter (Clean, Modern, Developer-friendly) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Icons: FontAwesome -->
+    <title>Faculty Portal - Vishwakarma University</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- CSS VARIABLES & RESET --- */
-        :root {
-            --bg-color: #0a0b10;         /* Deepest Dark */
-            --bg-secondary: #161b22;     /* Card Background */
-            --text-main: #f0f6fc;        /* White/Grey text */
-            --text-muted: #8b949e;       /* Muted text */
-            --accent: #2f81f7;           /* Github/Dev Blue */
-            --accent-glow: rgba(47, 129, 247, 0.2);
-            --border: #30363d;
-            --font-stack: 'Inter', sans-serif;
-            --nav-height: 80px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: var(--font-stack);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-
-        /* --- NAVIGATION --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: var(--nav-height);
-            background: rgba(10, 11, 16, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
-        .logo span { color: var(--accent); }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        .nav-links a:hover { color: var(--accent); }
-
-        /* Active Indicator */
-        .nav-links a.active { color: var(--text-main); }
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
-
-        /* --- GLOBAL ANIMATIONS --- */
-        .hidden-el {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-
-        .show-el {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- LAYOUT SECTIONS --- */
-        section {
-            padding: 100px 5%;
-            max-width: 1100px;
-            margin: 0 auto;
-            min-height: 80vh; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .section-header {
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .section-header h2::after {
-            content: "";
-            height: 1px;
-            background: var(--border);
-            flex: 1;
-            max-width: 300px;
-        }
-        .section-header span {
-            color: var(--accent);
-            font-family: monospace;
-            font-size: 1.2rem;
-            margin-right: 0.5rem;
-        }
-
-        /* --- HERO --- */
-        .hero {
-            min-height: 100vh;
-            align-items: flex-start;
-            padding-top: var(--nav-height);
-        }
-
-        .hero h4 {
-            color: var(--accent);
-            font-family: monospace;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-
-        .hero h3 {
-            font-size: 2rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            max-width: 600px;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-        }
-
-        /* BUTTONS */
-        .btn-container { display: flex; gap: 1rem; }
-
-        .btn {
-            padding: 0.8rem 1.8rem;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: 0.3s;
-            border: 1px solid var(--accent);
-        }
-
-        .btn-primary {
-            background: rgba(47, 129, 247, 0.1);
-            color: var(--accent);
-        }
-
-        .btn-primary:hover {
-            background: rgba(47, 129, 247, 0.25);
-            transform: translateY(-3px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-main);
-            border-color: var(--text-muted);
-        }
-        .btn-outline:hover {
-            border-color: var(--text-main);
-            transform: translateY(-3px);
-        }
-
-        /* --- ABOUT --- */
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
-        }
-        .about-text p { margin-bottom: 1rem; color: var(--text-muted); font-size: 1.05rem; }
-
-        .about-highlights li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 0.5rem;
-            font-family: monospace;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        .about-highlights li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* --- SKILLS CARD GRID --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem 1rem;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .skill-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
-        }
-        .skill-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
-        .skill-card span { display: block; font-weight: 600; font-size: 0.9rem; }
-
-        /* --- PROJECTS --- */
-        .project-card {
-            background: var(--bg-secondary);
-            border-radius: 10px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            margin-bottom: 2rem;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .project-top { display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: flex-start; }
+        body { font-family: 'Inter', sans-serif; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        .folder-icon { color: var(--accent); font-size: 2rem; }
-        .links a { color: var(--text-muted); font-size: 1.4rem; margin-left: 1rem; }
-        .links a:hover { color: var(--accent); }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        .project-card h3 { font-size: 1.5rem; margin-bottom: 0.8rem; }
-        .project-card p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1rem; }
-
-        .tech-stack { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .tech-stack span {
-            font-family: monospace;
-            font-size: 0.8rem;
-            color: var(--accent);
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
-
-        /* --- EDUCATION --- */
-        .timeline {
-            border-left: 2px solid var(--border);
-            padding-left: 2rem;
-            margin-left: 1rem;
-        }
-        .edu-item {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-        .edu-item::before {
-            content: '';
-            position: absolute;
-            left: -2.6rem;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg-color);
-            border: 2px solid var(--accent);
-        }
-        .edu-item h3 { font-size: 1.3rem; color: var(--text-main); }
-        .edu-item h4 { color: var(--text-muted); font-weight: 400; margin-bottom: 0.5rem; }
-        .edu-item span { color: var(--accent); font-family: monospace; font-size: 0.9rem; }
-
-        /* --- CONTACT --- */
-        .contact { text-align: center; align-items: center; }
         
-        .contact-content {
-            background: var(--bg-secondary);
-            padding: 3rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .social-links { margin: 2rem 0; display: flex; justify-content: center; gap: 2rem; }
-        .social-links a { font-size: 1.5rem; color: var(--text-muted); }
-        .social-links a:hover { color: var(--accent); transform: translateY(-3px); display: block; }
-
-        .email-btn {
-            margin-top: 1rem;
-            display: inline-block;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-family: monospace;
-            border-top: 1px solid var(--border);
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: var(--nav-height);
-                left: 0;
-                width: 100%;
-                background: var(--bg-secondary);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                transform: translateY(-150%);
-                transition: transform 0.3s;
-                gap: 1.5rem;
-                border-bottom: 1px solid var(--border);
-            }
-            .nav-links.nav-active { transform: translateY(0); }
-            .menu-toggle { display: block; }
-            
-            .hero h1 { font-size: 2.8rem; }
-            .hero h3 { font-size: 1.5rem; }
-            .about-content { grid-template-columns: 1fr; }
+        /* Checkbox styling */
+        .custom-checkbox:checked {
+            background-color: #2563eb;
+            border-color: #2563eb;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 h-screen overflow-hidden">
 
-    <!-- NAV BAR -->
-    <header>
-        <nav>
-            <div class="logo"><a href="#home">Rushikesh<span>.dev</span></a></div>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Main App Container -->
+    <div id="app" class="h-full w-full relative">
+        <!-- Content injected by JS -->
+    </div>
 
-    <!-- 1. HERO SECTION -->
-    <section id="home" class="hero hidden-el">
-        <h4>Hi, my name is</h4>
-        <h1>Rushikesh Ghatul.</h1>
-        <h3>Aspiring Software Engineer.</h3>
-        <p>I am a B.Tech Computer Science student (Batch 2029) at Vishwakarma University. I build efficient software solutions and enjoy the intersection of logic (C/C++, Linux) and design (Figma).</p>
-        <div class="btn-container">
-            <a href="#projects" class="btn btn-primary">Check out my work</a>
-            <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
-    </section>
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed top-5 right-5 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50 flex items-center gap-3">
+        <i class="fas fa-info-circle"></i>
+        <span id="toast-msg">Notification</span>
+    </div>
 
-    <!-- 2. ABOUT SECTION -->
-    <section id="about" class="hidden-el">
-        <div class="section-header">
-            <h2><span>01.</span> About Me</h2>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Hello! I'm Rushikesh, an engineering student with a strong curiosity for how computers solve problems. My journey began with C++ and has evolved into a passion for system-level programming and clean software architecture.</p>
-                <p>Currently, I am focusing on building a strong foundation in Data Structures, Algorithms, and Operating Systems via Linux.</p>
-                <p>Here are a few technologies I've been working with recently:</p>
-                <ul class="about-highlights">
-                    <li>C / C++</li>
-                    <li>Linux System</li>
-                    <li>HTML/CSS</li>
-                    <li>Figma (UI Design)</li>
-                    <li>Prompt Engineering</li>
-                    <li>Git & GitHub</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. SKILLS SECTION -->
-    <section id="skills" class="hidden-el">
-        <div class="section-header">
-            <h2><span>02.</span> My Toolkit</h2>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fab fa-cuttlefish"></i>
-                <span>C Language</span>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-code"></i>
-                <span>C++ / CPP</span>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-linux"></i>
-                <span>Linux CLI</span>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-git-alt"></i>
-                <span>Git Version Control</span>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-figma"></i>
-                <span>Figma UI</span>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-brain"></i>
-                <span>Algorithms</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. PROJECTS SECTION -->
-    <section id="projects" class="hidden-el">
-        <div class="section-header">
-            <h2><span>03.</span> Notable Projects</h2>
-        </div>
-        
-        <!-- Project Card 1: Faculty Portal -->
-        <div class="project-card">
-            <div class="project-top">
-                <div class="folder-icon"><i class="far fa-folder"></i></div>
-                <div class="links">
-                    <a href="https://github.com/BinaryxBeast/Faculty-Portal/" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://binaryxbeast.github.io/Faculty-Portal/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                </div>
-            </div>
-            <h3>Faculty Portal System</h3>
-            <p>A comprehensive web portal designed for university faculty to track academic records. It enables grading oversight, attendance tracking, and efficient student data management in a dashboard view.</p>
-            <div class="tech-stack">
-                <span>HTML</span>
-                <span>Web Design</span>
-                <span>System Analysis</span>
-            </div>
-        </div>
-
-        <p style="text-align:center; font-family: monospace; color: var(--accent);">More projects are in the pipeline...</p>
-    </section>
-
-    <!-- 5. EDUCATION SECTION -->
-    <section id="education" class="hidden-el">
-        <div class="section-header">
-            <h2><span>04.</span> Education History</h2>
-        </div>
-        <div class="timeline">
-            <div class="edu-item">
-                <h3>B.Tech in Computer Science</h3>
-                <h4>Vishwakarma University</h4>
-                <span>2025 - 2029 (Expected)</span>
-                <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.95rem;">
-                    Focusing on core CS fundamentals, problem-solving, and system design. Active participant in technical workshops and coding clubs.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. CONTACT SECTION -->
-    <section id="contact" class="contact hidden-el">
-        <div class="section-header">
-            <h2 style="justify-content: center;"><span>05.</span> Get In Touch</h2>
-        </div>
-        
-        <div class="contact-content">
-            <p>I am currently looking for internships and collaborative opportunities for 2026. Whether you have a question or just want to say hi, my inbox is always open!</p>
-            
-            <div class="social-links">
-                <a href="https://github.com/BinaryxBeast/" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/rushikeshghatul/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:ghatulrushikesh1176@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-
-            <a href="mailto:ghatulrushikesh1176@gmail.com" class="btn btn-primary email-btn">Say Hello</a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>Designed & Built by Rushikesh Ghatul</p>
-        <p>&copy; 2025 • Crafted with HTML, CSS, & JS</p>
-    </footer>
-
-    <!-- SCRIPT -->
     <script>
-        // 1. SCROLL OBSERVER (ANIMATIONS)
-        const observerOptions = {
-            root: null,
-            threshold: 0.15,
-            rootMargin: "0px"
+        // --- State Management ---
+        const state = {
+            view: 'login', // login, register, dashboard
+            currentUser: null,
+            activeTab: 'students', // students, attendance, homework, grades
+            attendanceView: 'overview', // 'overview' or 'mark'
+            studentView: 'list', // 'list' or 'add'
+            isSidebarOpen: true,
+            
+            // Demo Data
+            students: [
+                { id: 101, name: "Aarav Patel", roll: "VU21CS001", branch: "Comp Sci", email: "aarav.p@vu.edu.in", status: "Active" },
+                { id: 102, name: "Isha Sharma", roll: "VU21CS002", branch: "Comp Sci", email: "isha.s@vu.edu.in", status: "Active" },
+                { id: 103, name: "Rohan Gupta", roll: "VU21CS003", branch: "Comp Sci", email: "rohan.g@vu.edu.in", status: "Warning" },
+                { id: 104, name: "Meera Reddy", roll: "VU21CS004", branch: "Info Tech", email: "meera.r@vu.edu.in", status: "Active" },
+                { id: 105, name: "Kabir Singh", roll: "VU21CS005", branch: "AI & DS", email: "kabir.s@vu.edu.in", status: "Active" },
+            ],
+            
+            attendance: [
+                { date: "2023-10-25", course: "Data Structures", present: 45, absent: 5, total: 50 },
+                { date: "2023-10-24", course: "Database Mgmt", present: 48, absent: 2, total: 50 },
+                { date: "2023-10-23", course: "Operating Systems", present: 40, absent: 10, total: 50 },
+            ],
+
+            homework: [
+                { id: 1, title: "Binary Tree Implementation", course: "Data Structures", due: "2023-11-01", submitted: 42, total: 50 },
+                { id: 2, title: "SQL Normalization Report", course: "Database Mgmt", due: "2023-10-28", submitted: 48, total: 50 },
+                { id: 3, title: "Process Scheduling Algorithms", course: "Operating Systems", due: "2023-11-05", submitted: 15, total: 50 },
+            ],
+
+            grades: [
+                { studentId: 101, name: "Aarav Patel", assignments: 85, midTerm: 78, final: 82, grade: "A" },
+                { studentId: 102, name: "Isha Sharma", assignments: 92, midTerm: 88, final: 95, grade: "A+" },
+                { studentId: 103, name: "Rohan Gupta", assignments: 65, midTerm: 55, final: 60, grade: "C" },
+                { studentId: 104, name: "Meera Reddy", assignments: 78, midTerm: 82, final: 80, grade: "B+" },
+                { studentId: 105, name: "Kabir Singh", assignments: 88, midTerm: 75, final: 85, grade: "A" },
+            ]
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show-el');
-                }
+        // --- Core Rendering Functions ---
+
+        const app = document.getElementById('app');
+
+        function render() {
+            app.innerHTML = '';
+            if (state.view === 'login') {
+                renderLogin();
+            } else if (state.view === 'register') {
+                renderRegister();
+            } else if (state.view === 'dashboard') {
+                renderDashboard();
+            }
+        }
+
+        // --- Authentication Views ---
+
+        function renderLogin() {
+            app.innerHTML = `
+                <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 to-slate-900 p-4">
+                    <div class="glass-panel w-full max-w-md p-8 rounded-2xl shadow-2xl fade-in">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg text-white text-2xl">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h1 class="text-3xl font-bold text-slate-800">Vishwakarma University</h1>
+                            <p class="text-slate-500 mt-2">Faculty Portal Login</p>
+                        </div>
+                        
+                        <form onsubmit="handleLogin(event)" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Faculty ID / Email</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                    <input type="email" id="loginEmail" required value="faculty@vu.edu.in"
+                                        class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                        placeholder="Enter your email">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Password</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                    <input type="password" id="loginPass" required value="password"
+                                        class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                        placeholder="••••••••">
+                                </div>
+                            </div>
+
+                            <button type="submit" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors shadow-lg shadow-blue-500/30">
+                                Sign In
+                            </button>
+                        </form>
+
+                        <div class="mt-6 text-center text-sm text-slate-600">
+                            New Faculty Member? 
+                            <a href="#" onclick="switchView('register')" class="text-blue-600 font-semibold hover:underline">Register here</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderRegister() {
+            app.innerHTML = `
+                <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 to-slate-900 p-4">
+                    <div class="glass-panel w-full max-w-md p-8 rounded-2xl shadow-2xl fade-in">
+                        <div class="text-center mb-8">
+                            <h1 class="text-2xl font-bold text-slate-800">Faculty Registration</h1>
+                            <p class="text-slate-500 mt-1">Join the Vishwakarma Academic Team</p>
+                        </div>
+                        
+                        <form onsubmit="handleRegister(event)" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">First Name</label>
+                                    <input type="text" required class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
+                                    <input type="text" required class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Department</label>
+                                <select class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                                    <option>Computer Engineering</option>
+                                    <option>Information Technology</option>
+                                    <option>Mechanical Engineering</option>
+                                    <option>Civil Engineering</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                                <input type="email" required class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Set Password</label>
+                                <input type="password" required class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                            </div>
+
+                            <button type="submit" 
+                                class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition-colors mt-2">
+                                Create Account
+                            </button>
+                        </form>
+
+                        <div class="mt-6 text-center text-sm text-slate-600">
+                            Already have an account? 
+                            <a href="#" onclick="switchView('login')" class="text-blue-600 font-semibold hover:underline">Sign In</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- Dashboard Views ---
+
+        function renderDashboard() {
+            const sidebarClass = state.isSidebarOpen ? 'w-64' : 'w-20';
+            const hideTextClass = state.isSidebarOpen ? '' : 'hidden';
+            
+            app.innerHTML = `
+                <div class="flex h-screen bg-slate-50 overflow-hidden fade-in">
+                    
+                    <!-- Sidebar -->
+                    <aside class="${sidebarClass} bg-slate-900 text-white transition-all duration-300 flex flex-col shadow-xl z-20">
+                        <!-- Logo -->
+                        <div class="h-20 flex items-center justify-center border-b border-slate-700">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-lg font-bold">VU</div>
+                                <span class="font-bold text-xl tracking-tight ${hideTextClass}">Portal</span>
+                            </div>
+                        </div>
+
+                        <!-- Navigation -->
+                        <nav class="flex-1 py-6 px-3 space-y-2">
+                            ${renderNavItem('students', 'fa-users', 'Students')}
+                            ${renderNavItem('attendance', 'fa-calendar-check', 'Attendance')}
+                            ${renderNavItem('homework', 'fa-book-open', 'Homework')}
+                            ${renderNavItem('grades', 'fa-chart-bar', 'Grades')}
+                        </nav>
+
+                        <!-- User Profile Stub -->
+                        <div class="p-4 border-t border-slate-700">
+                            <div class="flex items-center gap-3 cursor-pointer hover:bg-slate-800 p-2 rounded-lg transition-colors" onclick="logout()">
+                                <img src="image_286024.png" 
+                                     onerror="this.src='https://ui-avatars.com/api/?name=Dr+Sonali+Patil&background=0D8ABC&color=fff'" 
+                                     alt="User" 
+                                     class="w-10 h-10 rounded-full bg-slate-200">
+                                <div class="${hideTextClass}">
+                                    <p class="text-sm font-semibold">${state.currentUser?.name || 'Faculty User'}</p>
+                                    <p class="text-xs text-slate-400">Logout</p>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Main Content Wrapper -->
+                    <div class="flex-1 flex flex-col h-full overflow-hidden relative">
+                        
+                        <!-- Header -->
+                        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10">
+                            <div class="flex items-center gap-4">
+                                <button onclick="toggleSidebar()" class="text-slate-500 hover:text-blue-600 focus:outline-none">
+                                    <i class="fas fa-bars text-xl"></i>
+                                </button>
+                                <h2 class="text-2xl font-bold text-slate-800 capitalize">${state.activeTab} Overview</h2>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <div class="relative">
+                                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                    <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 bg-slate-100 rounded-full text-sm focus:ring-2 focus:ring-blue-200 outline-none w-64">
+                                </div>
+                                <button class="relative text-slate-500 hover:text-blue-600">
+                                    <i class="fas fa-bell text-xl"></i>
+                                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                                </button>
+                            </div>
+                        </header>
+
+                        <!-- Content Area -->
+                        <main class="flex-1 overflow-y-auto p-8 bg-slate-50">
+                            ${getTabContent()}
+                        </main>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderNavItem(id, icon, label) {
+            const isActive = state.activeTab === id;
+            const activeClass = isActive ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/50' : 'text-slate-400 hover:bg-slate-800 hover:text-white';
+            const hideTextClass = state.isSidebarOpen ? '' : 'hidden';
+            
+            return `
+                <button onclick="switchTab('${id}')" class="w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all ${activeClass}">
+                    <i class="fas ${icon} w-6 text-center"></i>
+                    <span class="${hideTextClass} font-medium">${label}</span>
+                </button>
+            `;
+        }
+
+        function getTabContent() {
+            switch(state.activeTab) {
+                case 'students': 
+                    if (state.studentView === 'add') {
+                        return renderAddStudentForm();
+                    }
+                    return renderStudentsTab();
+                case 'attendance': 
+                    // Check sub-view for attendance
+                    if (state.attendanceView === 'mark') {
+                        return renderMarkAttendanceForm();
+                    }
+                    return renderAttendanceTab();
+                case 'homework': return renderHomeworkTab();
+                case 'grades': return renderGradesTab();
+                default: return renderStudentsTab();
+            }
+        }
+
+        // --- Content Components ---
+
+        function renderStudentsTab() {
+            const rows = state.students.map(s => `
+                <tr class="hover:bg-slate-50 border-b border-slate-100 transition-colors">
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">
+                                ${s.name.split(' ').map(n=>n[0]).join('')}
+                            </div>
+                            <div>
+                                <div class="font-semibold text-slate-800">${s.name}</div>
+                                <div class="text-xs text-slate-500">${s.email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 font-mono text-sm text-slate-600">${s.roll}</td>
+                    <td class="px-6 py-4 text-slate-600">${s.branch}</td>
+                    <td class="px-6 py-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold ${s.status === 'Active' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}">
+                            ${s.status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-slate-400 hover:text-blue-600 mx-1"><i class="fas fa-edit"></i></button>
+                        <button class="text-slate-400 hover:text-red-600 mx-1"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+
+            return `
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in">
+                    <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800">Enrolled Students</h3>
+                        <button onclick="showAddStudentForm()" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i> Add Student
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 font-medium">Student Name</th>
+                                    <th class="px-6 py-4 font-medium">Roll Number</th>
+                                    <th class="px-6 py-4 font-medium">Branch</th>
+                                    <th class="px-6 py-4 font-medium">Status</th>
+                                    <th class="px-6 py-4 font-medium text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAddStudentForm() {
+            return `
+                <div class="fade-in max-w-2xl mx-auto">
+                    <div class="flex items-center gap-4 mb-6">
+                        <button onclick="cancelAddStudent()" class="w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center hover:bg-slate-50 hover:text-slate-800 transition-colors shadow-sm">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h2 class="text-2xl font-bold text-slate-800">Register New Student</h2>
+                    </div>
+
+                    <form onsubmit="saveStudent(event)" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden p-8 space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+                                <input type="text" id="newStudentName" required class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Roll Number</label>
+                                <input type="text" id="newStudentRoll" required class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                                <input type="email" id="newStudentEmail" required class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Branch</label>
+                                <select id="newStudentBranch" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none bg-white">
+                                    <option>Comp Sci</option>
+                                    <option>Info Tech</option>
+                                    <option>AI & DS</option>
+                                    <option>Mechanical</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100 flex justify-end gap-4">
+                            <button type="button" onclick="cancelAddStudent()" class="px-6 py-2 rounded-lg text-slate-600 font-medium hover:bg-slate-50 transition-colors">
+                                Cancel
+                            </button>
+                            <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition-all">
+                                Add Student
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            `;
+        }
+
+        function renderAttendanceTab() {
+            const cards = state.attendance.map(record => {
+                const percentage = Math.round((record.present / record.total) * 100);
+                return `
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-1">${record.course}</div>
+                            <div class="text-slate-500 text-sm"><i class="far fa-calendar mr-2"></i>${record.date}</div>
+                        </div>
+                        <div class="h-10 w-10 rounded-full flex items-center justify-center font-bold text-sm ${percentage > 75 ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}">
+                            ${percentage}%
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-slate-600">Present</span>
+                                <span class="font-semibold text-slate-800">${record.present}</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm text-slate-500 pt-2 border-t border-slate-100">
+                            <span>Absent: ${record.absent}</span>
+                            <span>Total: ${record.total}</span>
+                        </div>
+                    </div>
+                    <button class="w-full mt-4 py-2 border border-slate-200 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
+                        View Details
+                    </button>
+                </div>
+            `}).join('');
+
+            return `
+                <div class="fade-in space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-blue-600 text-white p-6 rounded-2xl shadow-lg shadow-blue-500/30 flex items-center justify-between">
+                            <div>
+                                <p class="text-blue-100 mb-1">Today's Attendance</p>
+                                <h3 class="text-3xl font-bold">92%</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+                                <i class="fas fa-check-double"></i>
+                            </div>
+                        </div>
+                        <div class="bg-purple-600 text-white p-6 rounded-2xl shadow-lg shadow-purple-500/30 flex items-center justify-between">
+                            <div>
+                                <p class="text-purple-100 mb-1">Total Classes</p>
+                                <h3 class="text-3xl font-bold">45</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                        </div>
+                        <!-- Add New Attendance Card (Updated Interaction) -->
+                        <div class="bg-white border-2 border-dashed border-slate-300 p-6 rounded-2xl flex flex-col items-center justify-center text-slate-400 cursor-pointer hover:border-blue-400 hover:text-blue-500 transition-colors group" onclick="startAttendance()">
+                            <i class="fas fa-plus-circle text-3xl mb-2 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-medium">Mark New Attendance</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mt-8 mb-4">Recent Records</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${cards}
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- New: Mark Attendance Form ---
+
+        function renderMarkAttendanceForm() {
+            const today = new Date().toISOString().split('T')[0];
+            
+            const studentRows = state.students.map(s => `
+                <tr class="hover:bg-slate-50 border-b border-slate-100 transition-colors">
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs">
+                                ${s.name.split(' ').map(n=>n[0]).join('')}
+                            </div>
+                            <div>
+                                <div class="font-semibold text-slate-800">${s.name}</div>
+                                <div class="text-xs text-slate-500">${s.roll}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="attendance_${s.id}" checked class="form-checkbox w-5 h-5 text-blue-600 rounded focus:ring-blue-500 border-gray-300 transition duration-150 ease-in-out">
+                        </label>
+                    </td>
+                </tr>
+            `).join('');
+
+            return `
+                <div class="fade-in max-w-4xl mx-auto">
+                    <div class="flex items-center gap-4 mb-6">
+                        <button onclick="cancelAttendance()" class="w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center hover:bg-slate-50 hover:text-slate-800 transition-colors shadow-sm">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <h2 class="text-2xl font-bold text-slate-800">Mark Attendance</h2>
+                    </div>
+
+                    <form onsubmit="saveAttendance(event)" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                        
+                        <!-- Form Header Controls -->
+                        <div class="p-6 border-b border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Select Course</label>
+                                <select id="attCourse" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none bg-white">
+                                    <option>Data Structures</option>
+                                    <option>Database Mgmt</option>
+                                    <option>Operating Systems</option>
+                                    <option>Computer Networks</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Date</label>
+                                <input type="date" id="attDate" value="${today}" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-200 outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <!-- Student List -->
+                        <div class="bg-white">
+                            <table class="w-full text-left border-collapse">
+                                <thead class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider sticky top-0">
+                                    <tr>
+                                        <th class="px-6 py-3 font-medium">Student Details</th>
+                                        <th class="px-6 py-3 font-medium text-center">Present?</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${studentRows}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Footer Actions -->
+                        <div class="p-6 border-t border-slate-100 bg-slate-50/50 flex justify-end gap-4">
+                            <button type="button" onclick="cancelAttendance()" class="px-6 py-2 rounded-lg text-slate-600 font-medium hover:bg-slate-200 transition-colors">
+                                Cancel
+                            </button>
+                            <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition-all">
+                                Save Attendance
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            `;
+        }
+
+
+        function renderHomeworkTab() {
+            const items = state.homework.map(hw => `
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-6 group hover:border-blue-300 transition-all">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-50 text-blue-600 rounded-xl flex flex-col items-center justify-center border border-blue-100">
+                        <span class="text-xs font-bold uppercase">${new Date(hw.due).toLocaleString('default', { month: 'short' })}</span>
+                        <span class="text-xl font-bold">${new Date(hw.due).getDate()}</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg group-hover:text-blue-600 transition-colors">${hw.title}</h4>
+                                <p class="text-sm text-slate-500">${hw.course}</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-2xl font-bold text-slate-800">${hw.submitted}<span class="text-slate-400 text-lg">/${hw.total}</span></span>
+                                <span class="text-xs text-slate-500">Submitted</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 w-full bg-slate-100 rounded-full h-1.5">
+                            <div class="bg-blue-600 h-1.5 rounded-full" style="width: ${(hw.submitted/hw.total)*100}%"></div>
+                        </div>
+                    </div>
+                    <button class="p-3 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            return `
+                <div class="fade-in max-w-4xl mx-auto space-y-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Active Assignments</h3>
+                        <button class="bg-slate-800 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-900 shadow-lg shadow-slate-200">
+                            <i class="fas fa-plus mr-2"></i> Create Assignment
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        ${items}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGradesTab() {
+            const rows = state.grades.map(g => {
+                let gradeColor = 'text-slate-800';
+                if(g.grade.startsWith('A')) gradeColor = 'text-green-600';
+                if(g.grade.startsWith('B')) gradeColor = 'text-blue-600';
+                if(g.grade === 'C') gradeColor = 'text-amber-600';
+
+                return `
+                <tr class="border-b border-slate-100 hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-800">${g.name}</td>
+                    <td class="px-6 py-4 text-center">${g.assignments}</td>
+                    <td class="px-6 py-4 text-center">${g.midTerm}</td>
+                    <td class="px-6 py-4 text-center">${g.final}</td>
+                    <td class="px-6 py-4 text-center font-bold text-lg ${gradeColor}">${g.grade}</td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-blue-600 hover:underline text-sm font-medium">Edit</button>
+                    </td>
+                </tr>
+            `}).join('');
+
+            return `
+                <div class="fade-in bg-white rounded-2xl shadow-sm border border-slate-200">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50 rounded-t-2xl flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800">Gradebook - Data Structures</h3>
+                        <div class="flex gap-2">
+                             <button class="px-3 py-1.5 bg-white border border-slate-300 rounded text-sm text-slate-600 hover:bg-slate-50">Export CSV</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 font-medium">Student</th>
+                                    <th class="px-6 py-4 font-medium text-center">Assignments (30%)</th>
+                                    <th class="px-6 py-4 font-medium text-center">Mid-Term (30%)</th>
+                                    <th class="px-6 py-4 font-medium text-center">Final (40%)</th>
+                                    <th class="px-6 py-4 font-medium text-center">Grade</th>
+                                    <th class="px-6 py-4 font-medium text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- Interaction Handlers ---
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            // Simulated login
+            if (email) {
+                state.currentUser = { name: "Dr. Sonali Patil", email: email };
+                state.view = 'dashboard';
+                showToast(`Welcome back, ${state.currentUser.name}`);
+                render();
+            }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            showToast("Registration Successful! Please login.");
+            switchView('login');
+        }
+
+        function logout() {
+            state.currentUser = null;
+            state.view = 'login';
+            showToast("Logged out successfully");
+            render();
+        }
+
+        function switchView(viewName) {
+            state.view = viewName;
+            render();
+        }
+
+        function switchTab(tabName) {
+            state.activeTab = tabName;
+            // Reset sub-views when switching main tabs
+            state.attendanceView = 'overview';
+            state.studentView = 'list';
+            render(); 
+        }
+
+        function toggleSidebar() {
+            state.isSidebarOpen = !state.isSidebarOpen;
+            render();
+        }
+
+        // --- Student Management Logic ---
+
+        function showAddStudentForm() {
+            state.studentView = 'add';
+            render();
+        }
+
+        function cancelAddStudent() {
+            state.studentView = 'list';
+            render();
+        }
+
+        function saveStudent(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('newStudentName').value;
+            const roll = document.getElementById('newStudentRoll').value;
+            const email = document.getElementById('newStudentEmail').value;
+            const branch = document.getElementById('newStudentBranch').value;
+
+            const newStudent = {
+                id: Date.now(), // simple unique id
+                name: name,
+                roll: roll,
+                branch: branch,
+                email: email,
+                status: "Active"
+            };
+
+            state.students.unshift(newStudent); // Add to beginning of list
+            showToast(`${name} added successfully!`);
+            state.studentView = 'list';
+            render();
+        }
+
+        // --- Attendance Logic ---
+        
+        function startAttendance() {
+            state.attendanceView = 'mark';
+            render();
+        }
+
+        function cancelAttendance() {
+            state.attendanceView = 'overview';
+            render();
+        }
+
+        function saveAttendance(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const course = document.getElementById('attCourse').value;
+            const date = document.getElementById('attDate').value;
+            
+            // Count checked boxes
+            let presentCount = 0;
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                if(cb.checked) presentCount++;
             });
-        }, observerOptions);
+            
+            const total = checkboxes.length; // Or state.students.length
+            const absent = total - presentCount;
 
-        const hiddenElements = document.querySelectorAll('.hidden-el');
-        hiddenElements.forEach((el) => observer.observe(el));
-
-        // 2. ACTIVE NAV LINK HIGHLIGHTER
-        const sections = document.querySelectorAll('section');
-        const navLi = document.querySelectorAll('.nav-links li a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 250)) {
-                    current = section.getAttribute('id');
-                }
+            // Add to state
+            state.attendance.unshift({
+                date: date,
+                course: course,
+                present: presentCount,
+                absent: absent,
+                total: total
             });
 
-            navLi.forEach(li => {
-                li.classList.remove('active');
-                if (li.getAttribute('href').includes(current)) {
-                    li.classList.add('active');
-                }
-            });
-        });
+            showToast("Attendance Saved Successfully!");
+            state.attendanceView = 'overview';
+            render();
+        }
 
-        // 3. MOBILE MENU TOGGLE
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toast-msg');
+            msg.textContent = message;
+            
+            toast.classList.remove('translate-x-full');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
+        }
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-        });
+        // --- Initialization ---
+        render();
 
-        // Close menu when a link is clicked
-        navLi.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('nav-active');
-            });
-        });
     </script>
 </body>
 </html>
